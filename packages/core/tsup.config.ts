@@ -1,5 +1,4 @@
 import { defineConfig } from "tsup";
-import { markAsExternalPlugin } from "../shared/tsup-plugins/mark-as-external";
 
 export default defineConfig({
   entry: ["src/index.ts"],
@@ -42,7 +41,7 @@ export default defineConfig({
       }
     })();`,
   },
-  esbuildPlugins: [markAsExternalPlugin],
+  external: [/node_modules/],
   esbuildOptions(options) {
     options.keepNames = true;
     return options;
